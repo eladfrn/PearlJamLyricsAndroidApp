@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { View, ListView, Text, TouchableHighlight } from 'react-native';
+import React, { Component } from 'react';
+import { View, ListView } from 'react-native';
 import albumsListRetriever from '../common/albumsListRetriever';
 import AlbumItem from "./AlbumItem";
 
@@ -24,7 +24,6 @@ export default class AlbumsContainer extends Component {
     }
 
     navigateToAlbum(albumName){
-        debugger;
         this.props.navigation.navigate('AlbumContainer',{albumName: albumName, albumType: 'Studio'});
     }
 

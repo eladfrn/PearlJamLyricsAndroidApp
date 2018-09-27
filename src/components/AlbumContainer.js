@@ -14,8 +14,7 @@ export default class AlbumContainer extends Component {
         };
     }
 
-    getAlbumDetails() {       
-        
+    getAlbumDetails() {               
         const album = albumRetriever.getAlbum(this.navParams.albumType, this.navParams.albumName);
         return album;
     }
@@ -41,6 +40,7 @@ export default class AlbumContainer extends Component {
 
     render() {
         this.getAlbumSongsList();
+        let songnumber = 1;
         return (
             <View style={{ paddingLeft: 20, flex: 1, flexDirection: 'column' }}>
                 <View style={{ flexDirection: 'row', paddingBottom: 20, }}>                   
@@ -50,10 +50,10 @@ export default class AlbumContainer extends Component {
                     dataSource={this.state.dataSource}
                     renderRow={(songName) =>
                         <View>
-                            <TouchableHighlight underlayColor="red"
+                            <TouchableHighlight underlayColor="gray"
                                 onPress={() =>
                                     this.displaySongDetails(songName)} >
-                                <Text style={{ paddingBottom: 20, borderBottomWidth: 1 }}>{songName}</Text>
+                                <Text style={{ paddingBottom: 20, fontSize: 20 }}>{(songnumber++) + '. ' + songName}</Text>
                             </TouchableHighlight>
                         </View>
                     }

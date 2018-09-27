@@ -14,7 +14,6 @@ export default class SongContainer extends Component {
     }    
 
     getLyrics() {
-        debugger;
         const navParams = this.props.navigation.state.params;
         let lyrics = lyricsRetriever.getLyrics(navParams.album, navParams.songName);
         if (!lyrics.includes('#'))
@@ -32,7 +31,7 @@ export default class SongContainer extends Component {
             <View>
                 <Text style={{ paddingLeft: 20, fontSize: 30 }} >{this.props.songName}</Text>
                 <ScrollView style={{ padding: 20 }}>
-                    <Text style={{ marginBottom: 70 }} >{lyrics}</Text>
+                    <Text style={{ marginBottom: 70, fontSize: 15 }} >{lyrics}</Text>
                 </ScrollView >
             </View>
         );
