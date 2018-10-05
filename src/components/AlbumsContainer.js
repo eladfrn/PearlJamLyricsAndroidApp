@@ -6,7 +6,6 @@ import AlbumItem from "./AlbumItem";
 export default class AlbumsContainer extends Component {
     constructor(props) {
         super(props);
-
         this.getAlbumsList = this.getAlbumsList.bind(this);
         this.navigateToAlbum = this.navigateToAlbum.bind(this);
 
@@ -23,8 +22,8 @@ export default class AlbumsContainer extends Component {
         return albumsList.Albums;
     }
 
-    navigateToAlbum(albumName){
-        this.props.navigation.navigate('AlbumContainer',{albumName: albumName, albumType: 'Studio'});
+    navigateToAlbum(albumName) {
+        this.props.navigation.navigate('AlbumContainer', { title: albumName, albumName: albumName, albumType: 'Studio' });
     }
 
     render() {

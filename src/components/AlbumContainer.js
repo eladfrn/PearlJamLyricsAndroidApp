@@ -35,7 +35,7 @@ export default class AlbumContainer extends Component {
     
     displaySongDetails(songName) {
         let album = this.getAlbumDetails();
-        this.props.navigation.navigate('SongContainer',{album: album, songName: songName})
+        this.props.navigation.navigate('SongContainer',{title: songName, album: album, songName: songName})
     }
 
     render() {

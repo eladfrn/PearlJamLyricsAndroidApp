@@ -1,17 +1,20 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import lyricsRetriever from '../common/lyricsRetriever';
 import albumRetriever from '../common/albumRetriever';
+import ZoomLyricsContainer from "./ZoomLyricsContainer";
 
 export default class SongContainer extends Component {
     constructor(props) {
         super(props);
 
+        this.increaseFontSize = this.increaseFontSize.bind(this);
+        this.decreaseFontSize = this.decreaseFontSize.bind(this);
         this.state = {
-            dataSource: []
+            dataSource: [],
+            fontSize: 15
         }
-
-    }    
+    }
 
     getLyrics() {
         const navParams = this.props.navigation.state.params;
@@ -25,14 +28,26 @@ export default class SongContainer extends Component {
         return lyrics;
     }
 
+    increaseFontSize() {
+        const fontSize = this.state.fontSize += 2;
+        this.setState({ fontSize: fontSize })
+
+    }
+
+    decreaseFontSize() {
+        const fontSize = this.state.fontSize -= 2;
+        this.setState({ fontSize: fontSize })
+    }
+
     render() {
-        let lyrics = this.getLyrics();
+        const lyrics = this.getLyrics();
+        const fontSize = this.state.fontSize;      
         return (
             <View>
-                <Text style={{ paddingLeft: 20, fontSize: 30 }} >{this.props.songName}</Text>
-                <ScrollView style={{ padding: 20 }}>
-                    <Text style={{ marginBottom: 70, fontSize: 15 }} >{lyrics}</Text>
+                <ScrollView>
+                    <Text style={{ margin: 20, fontSize: fontSize }} >{lyrics}</Text>
                 </ScrollView >
+                <ZoomLyricsContainer increaseFontSize={this.increaseFontSize} decreaseFontSize={this.decreaseFontSize} />
             </View>
         );
     }
